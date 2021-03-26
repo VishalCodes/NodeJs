@@ -1,14 +1,13 @@
 name: GitHub Workspace
 
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x,14.x]
- 
+        node-version: [12.x,14.x] 
     steps:
     - uses: actions/checkout@v2
       with:
@@ -20,8 +19,8 @@ jobs:
     - run: npm ci
    #- run: npm run build --if-present
     - run: npm test
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+   # - name: SonarCloud Scan
+   #   uses: sonarsource/sonarcloud-github-action@master
+   #   env:
+   #     GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+   #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
