@@ -17,7 +17,7 @@
 # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
 on:
   pull_request:
-    types: [opened]
+    types: [closed]
 
 env:
   AZURE_WEBAPP_NAME: NoeJsTest    # set this to your application's name
@@ -28,7 +28,7 @@ jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
-    environment: production
+    environment: Prod
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ env.NODE_VERSION }}
